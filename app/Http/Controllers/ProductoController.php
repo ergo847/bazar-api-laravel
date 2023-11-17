@@ -22,10 +22,12 @@ class ProductoController extends Controller
             $productos = Producto::query();
 
             if ($request->has('search')) {
-                $productos->orWhere('title', 'like', '%' . $request->search . '%');
-                $productos->orWhere('description', 'like', '%' . $request->search . '%');
-                $productos->orWhere('brand', 'like', '%' . $request->search . '%');
-                $productos->orWhere('category', 'like', '%' . $request->search . '%');
+                $productos->where(function ($query) use ($request) {
+                    $query->where('title', 'like', '%' . $request->search . '%')
+                        ->orWhere('description', 'like', '%' . $request->search . '%')
+                        ->orWhere('brand', 'like', '%' . $request->search . '%')
+                        ->orWhere('category', 'like', '%' . $request->search . '%');
+                });
             }
 
             $productos = $productos->paginate(10)->appends($request->query());
@@ -34,8 +36,8 @@ class ProductoController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Lista de productos',
+                'request' => $request->all(),
                 'data' => $productos,
-                'request' => $request->all()
             ], 200);
         }
     }
