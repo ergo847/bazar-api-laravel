@@ -30,7 +30,7 @@ class ProductoController extends Controller
                 });
             }
 
-            $productos = $productos->paginate(10)->appends($request->query());
+            $productos = $productos->paginate(9)->appends($request->query());
 
             // return json response
             return response()->json([
