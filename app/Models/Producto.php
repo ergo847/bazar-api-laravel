@@ -29,6 +29,7 @@ class Producto extends Model
     public function detalle()
     {
         $images = $this->images()->get()->pluck('url')->toArray();
-        return array('images' => $images);
+        $this->images = $images;
+        return $this;
     }
 }
