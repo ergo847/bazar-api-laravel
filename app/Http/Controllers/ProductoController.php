@@ -76,9 +76,12 @@ class ProductoController extends Controller
 
         // upload images
         foreach ($request->images as $image) {
-            $producto->images()->create([
-                'url' => $image,
-            ]);
+            /* crea si image no esta vacio */
+            if ($image) {
+                $producto->images()->create([
+                    'url' => $image,
+                ]);
+            }
         }
 
         // return json response
