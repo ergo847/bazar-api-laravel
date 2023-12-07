@@ -56,7 +56,7 @@ class ProductoController extends Controller
             'thumbnail' => 'required|string',
             'price' => 'required|numeric',
             'discountPercentage' => 'required|numeric',
-            'rating' => 'requided|numeric',
+            'rating' => 'required|numeric',
             'stock' => 'required|numeric',
             'images' => 'required|array',
         ]);
