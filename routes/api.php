@@ -22,3 +22,4 @@ Route::get('productos', [App\Http\Controllers\ProductoController::class, 'index'
 Route::post('productos', [App\Http\Controllers\ProductoController::class, 'create'])->name('productos.create');
 Route::get('productos/{producto}', [App\Http\Controllers\ProductoController::class, 'index'])->name('productos.detalle');
 Route::put('productos/{producto}', [App\Http\Controllers\ProductoController::class, 'update'])->name('productos.update');
+Route::delete('productos/{producto}', [App\Http\Controllers\ProductoController::class, 'delete'])->name('productos.delete');

@@ -135,4 +135,17 @@ class ProductoController extends Controller
             'data' => $producto->detalle(),
         ], 200);
     }
+
+    // delete
+    public function delete(Producto $producto)
+    {
+        // delete producto
+        $producto->delete();
+
+        // return json response
+        return response()->json([
+            'success' => true,
+            'message' => 'Producto eliminado',
+        ], 200);
+    }
 }
