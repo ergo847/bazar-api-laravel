@@ -142,6 +142,8 @@ class ProductoController extends Controller
     // delete
     public function delete(Producto $producto)
     {
+        // borrar imagenes del producto
+        $producto->images()->delete();
         // delete producto
         $producto->delete();
 
